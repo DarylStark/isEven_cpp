@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
 #include "isEven.h"
 
 //
@@ -42,8 +43,23 @@ void createHeader(int max_value)
 
     f.close();
 
-    // We're done!
-    std::cout << "Done! Please compile, link and run the app again!" << std::endl;
+    // Header is created, recompile app
+    std::cout << "Done creating the header file! Compiling for you now!" << std::endl;
+
+    // Define the name for the app
+    std::stringstream app_name;
+    app_name << "isEven_1." << max_value;
+
+    // Compile
+    std::stringstream s;
+    s << "g++ -Wall -std=c++17 isEven.cpp -o " << app_name.str();
+    std::system(s.str().c_str());
+    std::cout << "Compiling is done! Rerunning the command :)" << std::endl;
+
+    // Rerun the program
+    std::stringstream run;
+    run << "./" << app_name.str() << " " << max_value;
+    std::system(run.str().c_str());
 }
 
 template <class T>
@@ -60,6 +76,7 @@ bool isEven(T value)
         {
             std::cerr << "Number " << value << " not calculated yet. Header needs to be recreated" << std::endl;
             createHeader(static_cast<int>(value));
+            throw 2;
         }
     }
     return even;
@@ -82,13 +99,21 @@ int main(int argc, char **argv)
     s >> nr;
 
     // Check if the number is even and give the results
-    if (isEven(nr))
+    try
     {
-        std::cout << "The number " << nr << " is even!" << std::endl;
-        return 0;
-    }
+        bool even = isEven(nr);
+        if (even)
+        {
+            std::cout << "The number " << nr << " is even!" << std::endl;
+            return 0;
+        }
 
-    std::cout << "The number " << nr << " is odd!" << std::endl;
+        std::cout << "The number " << nr << " is odd!" << std::endl;
+    }
+    catch (int &err)
+    {
+        return err;
+    }
 
     return 0;
 }

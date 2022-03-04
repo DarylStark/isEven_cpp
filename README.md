@@ -4,7 +4,7 @@ This algorithm calculates if a number is _even_ or _odd_ in C++. A number is _ev
 
 ## Project structure
 
-In the `src` folder are the source files; the `getEven.cpp` is the main C++ program which includes a the `isEven.h` header. This header gets changed during runtime if a number is requested that is not yet calculated by my efficient algorithm. When the file gets changed, you can recompile the program to get the value you need.
+In the `src` folder are the source files; the `getEven.cpp` is the main C++ program which includes a the `isEven.h` header. This header gets changed during runtime if a number is requested that is not yet calculated by my efficient algorithm. When the file gets changed, the programm will be recompiled automatically.
 
 ## Compile instructions
 
@@ -21,7 +21,7 @@ You can then run the program as follows:
 ./isEven <number>
 ```
 
-The program will immidiatly display if the number is _even_ or _odd_. You can recompile if the number is not defined yet :-).
+The program will immidiatly display if the number is _even_ or _odd_. If the number is not defined yet, it will adjust the header and recompile the application and rerun the application so you can still get the needed result.
 
 If you use a different compiler then GCC, please refer to the documentation of the used compiler. I'm too busy writing cool stuff like this to document how to compile on other platforms.
 
