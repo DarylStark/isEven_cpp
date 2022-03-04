@@ -18,8 +18,10 @@ g++ -std=c++17 isEven.cpp -o isEven
 You can then run the program as follows:
 
 ```bash
-./isEven
+./isEven <number>
 ```
+
+The program will immidiatly display if the number is _even_ or _odd_. You can recompile if the number is not defined yet :-).
 
 If you use a different compiler then GCC, please refer to the documentation of the used compiler. I'm too busy writing cool stuff like this to document how to compile on other platforms.
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "isEven.h"
 
 //
@@ -64,10 +65,30 @@ bool isEven(T value)
     return even;
 }
 
-int main()
+int main(int argc, char **argv)
 {
-    std::cout << std::boolalpha;
-    std::cout << isEven(200122) << std::endl;
+    if (argc != 2)
+    {
+        std::cerr << "Usage: isEvent <number>" << std::endl;
+        return 1;
+    }
+
+    // Get the input parameter
+    std::stringstream s;
+    int nr;
+
+    // Convert it to a integer
+    s << argv[1];
+    s >> nr;
+
+    // Check if the number is even and give the results
+    if (isEven(nr))
+    {
+        std::cout << "The number " << nr << " is even!" << std::endl;
+        return 0;
+    }
+
+    std::cout << "The number " << nr << " is odd!" << std::endl;
 
     return 0;
 }
